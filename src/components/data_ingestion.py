@@ -3,10 +3,17 @@ import sys
 from src.exception import CustomException
 from src.logger import logging
 import pandas as pd
-from simple_linear_regr_utils import generate_data
+from src.simple_linear_regr_utils import generate_data
 
 
 from dataclasses import dataclass
+
+from src.components.data_transformation import DataTransformation
+
+
+from src.components.model_trainer import ModelTrainerConfig
+from src.components.model_trainer import ModelTrainer
+
 
 
 @dataclass
@@ -45,4 +52,12 @@ class DataIngestion:
         
 if __name__=="__main__":
     obj = DataIngestion()
-    obj.initiate_data_ingestion()
+    train_data, test_data = obj.initiate_data_ingestion()
+    
+    data_transformation=DataTransformation()
+    train_arr,test_arr = data_transformation.initiate_data_transformation(train_data,test_data)
+    print(test_arr)
+
+
+
+    #modeltrainer = ModelTrainer()
