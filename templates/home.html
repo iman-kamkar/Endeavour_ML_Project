@@ -1,0 +1,21 @@
+<html>
+<body>
+    <div class="login">
+       <h1>Predict Diabeties</h1>
+   
+       <form action="{{ url_for('predict_datapoint')}}" method="post">
+        
+        <div class="mb-3">
+            <label class="form-label">X value</label>
+            <input class="form-control" type="number" step="0.001" name="X"
+                placeholder="Enter X value"/>
+        </div>
+        <div class="mb-3">
+            <input class="btn btn-primary" type="submit" value="Predict Diabeties score" required />
+        </div>
+    </form>
+    <h2>
+       THE  prediction is {{results}}
+    </h2>
+   <body>
+</html>

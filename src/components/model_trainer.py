@@ -18,24 +18,20 @@ class ModelTrainer:
         self.model_trainer_config=ModelTrainerConfig()
 
 
-    def initiate_model_trainer(self,train_array,test_array):
+    def initiate_model_trainer(self, X_train, y_train, X_test, y_test):
         try:
-            logging.info("Split training and test input data")
-            X_train,y_train,X_test,y_test=(
-                train_array[:,:-1],
-                train_array[:,-1],
-                test_array[:,:-1],
-                test_array[:,-1]
-            )
+            
             model = SimpleLinearRegression()
 
             model.fit(X_train, y_train)
             
+            logging.info(f"Model is fit on the training data")
+            
             y_hat = model.predict(X_test)
+
+            logging.info(f"Model has predicted new test data")
             
             evaluate(model, X_test, y_test, y_hat)
-
-            logging.info(f"Model is fit on the training data")
 
             save_object(
                 file_path=self.model_trainer_config.trained_model_file_path,
