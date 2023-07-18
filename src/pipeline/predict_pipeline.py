@@ -19,18 +19,3 @@ class PredictPipeline:
         except Exception as e:
             raise CustomException(e,sys)
 
-
-
-class CustomData:
-    def __init__( self, X: float):
-
-        self.X = X
-
-    def get_data(self):
-        try:
-            X = self.X
-
-            return X
-        
-        except Exception as e:
-            raise CustomException(e, sys)
